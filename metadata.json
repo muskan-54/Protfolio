@@ -1,0 +1,8 @@
+{
+  "name": "Muskan Fatima Portfolio",
+  "description": "A high-performance portfolio for Muskan Fatima, featuring AI projects, frontend expertise, and interactive AI demos.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
