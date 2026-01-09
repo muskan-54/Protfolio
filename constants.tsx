@@ -10,7 +10,7 @@ export const PROJECTS: Project[] = [
     techStack: ['Next.js', 'PostgreSQL', 'LangChain', 'OpenAI'],
     aiUsage: 'Used LangChain for agent orchestration and Pinecone for semantic memory.',
     link: 'https://mornet-project.vercel.app/',
-    image: 'https://picsum.photos/seed/mornet/800/600',
+    image: 'https://screenrec.com/share/mk0JYS1uW5',
     category: 'Full-stack'
   },
   {
@@ -32,7 +32,7 @@ export const PROJECTS: Project[] = [
     techStack: ['Gemini 3 Flash', 'React', 'Tailwind CSS'],
     aiUsage: 'Leveraged Gemini 3 high-speed reasoning for real-time medical term simplification.',
     link: 'https://www.kaggle.com/competitions/gemini-3/writeups/medicat-ai-explainer-science-made-simple',
-    image: 'https://picsum.photos/seed/medicat/800/600',
+    image: 'https://screenrec.com/share/3KNgER0V9O',
     category: 'AI'
   },
   {
@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     techStack: ['Python', 'Claude API', 'Next.js', 'Tailwind'],
     aiUsage: 'Integrated Claude 3.5 Sonnet for superior coding assistance and reasoning.',
     link: 'https://youtu.be/nNz6FX7HZqo',
-    image: 'https://picsum.photos/seed/claude/800/600',
+    image: 'https://screenrec.com/share/sKDhqwe491',
     category: 'Tooling',
     videoUrl: 'https://www.youtube.com/embed/nNz6FX7HZqo'
   },

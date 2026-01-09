@@ -144,7 +144,7 @@ const Home: React.FC = () => {
             <div className="relative aspect-square group animate-fade-in-up delay-200">
               <div className="absolute inset-0 bg-indigo-500/20 blur-[60px] group-hover:bg-indigo-500/30 transition-all"></div>
               <img 
-                src="https://picsum.photos/seed/muskan/600/600" 
+                src="https://gemini.google.com/share/b8b77cc99662" 
                 alt="Muskan Fatima" 
                 className="relative z-10 w-full h-full object-cover rounded-3xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700 shadow-2xl"
               />
