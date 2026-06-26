@@ -1,10 +1,9 @@
 "use client";
 
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
-import { useState, useRef, useEffect } from 'react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 
 export default function GoogleBadges() {
-  const [activeBadgeUrl, setActiveBadgeUrl] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -145,10 +144,13 @@ export default function GoogleBadges() {
                   isEven ? "md:justify-self-start md:ml-12" : "md:justify-self-end md:mr-12"
                 )}
               >
-                <motion.div 
+                <motion.a
+                  href={badge.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Open verification for ${badge.title}`}
                   whileHover={{ y: -6, borderColor: 'rgba(245, 158, 11, 0.4)' }}
-                  onClick={() => setActiveBadgeUrl(badge.url)}
-                  className="bg-zinc-950/60 backdrop-blur-sm border border-zinc-800/50 p-6 rounded-xl cursor-pointer transition-all flex flex-col justify-between shadow-lg group relative overflow-hidden h-full"
+                  className="block bg-zinc-950/60 backdrop-blur-sm border border-zinc-800/50 p-6 rounded-xl cursor-pointer transition-all flex flex-col justify-between shadow-lg group relative overflow-hidden h-full"
                 >
                   {/* Subtle tech grid icon asset placeholder */}
                   <div className="text-4xl mb-6 bg-zinc-900/80 w-14 h-14 flex items-center justify-center rounded-lg border border-zinc-800 shadow-inner group-hover:text-amber-400 transition-colors">
@@ -162,7 +164,7 @@ export default function GoogleBadges() {
                   </div>
 
                   {/* View Overlay Panel */}
-                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 pointer-events-none">
                     <span className="bg-zinc-950 border border-zinc-700 px-3 py-1.5 rounded text-[11px] text-amber-400 font-bold uppercase italic">
                       ▶ STREAM VERIFICATION
                     </span>
@@ -177,65 +179,16 @@ export default function GoogleBadges() {
                     }}
                     transition={{ delay: 0.2, duration: 0.5 }}
                   />
+                </motion.a>
                 </motion.div>
-              </motion.div>
+                                
+              
             );
           })}
+        
         </div>
       </div>
 
-      {/* LIGHTBOX MODAL: STREAMS THE LIVE GOOGLE BADGE PAGE DIRECTLY */}
-      <AnimatePresence>
-        {activeBadgeUrl && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setActiveBadgeUrl(null)}
-            className="fixed inset-0 z-[200] bg-black/95 flex items-center justify-center p-4 md:p-12 backdrop-blur-md"
-          >
-            <motion.div 
-              initial={{ scale: 0.95, y: 15 }}
-              animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.95, y: 15 }}
-              className="relative max-w-5xl w-full h-full bg-zinc-950 p-2 rounded-xl border border-zinc-800 flex flex-col shadow-[0_0_100px_rgba(0,0,0,1)]"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="flex justify-between items-center px-6 py-4 border-b border-zinc-900 bg-zinc-900/50 rounded-t-lg">
-                <span className="text-[10px] text-zinc-500 font-black tracking-widest uppercase">
-                  SECURE LINK // GOOGLE_SKILLS_AUTH
-                </span>
-                <div className="flex gap-6">
-                  <a 
-                    href={activeBadgeUrl} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="text-[10px] text-amber-400 hover:text-amber-300 font-black tracking-widest uppercase italic"
-                  >
-                    [ OPEN IN NEW TAB ↗ ]
-                  </a>
-                  <button 
-                    onClick={() => setActiveBadgeUrl(null)}
-                    className="text-zinc-400 hover:text-white font-black text-[10px] tracking-widest uppercase"
-                  >
-                    [ CLOSE_ESC ]
-                  </button>
-                </div>
-              </div>
-
-              {/* Live Streaming Frame */}
-              <div className="w-full flex-1 bg-white rounded-b-lg overflow-hidden relative">
-                <iframe 
-                  src={activeBadgeUrl} 
-                  title="Google Badge Verification Screen"
-                  className="w-full h-full border-none"
-                  sandbox="allow-scripts allow-same-origin allow-popups"
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }
